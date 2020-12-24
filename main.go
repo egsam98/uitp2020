@@ -9,16 +9,15 @@ import (
 
 	"uitp/business"
 	"uitp/handlers"
+	"uitp/utils/file"
 )
 
-const (
-	defaultPort  = 8080
-	staticDir    = "static"
-	templatesDir = "templates"
-)
+const defaultPort = 8080
 
 var (
-	uitpFilename = filepath.Join("static", "Otvety_UITP_2020.html")
+	staticDir    = filepath.Join(file.Root(), "static")
+	templatesDir = filepath.Join(file.Root(), "templates")
+	uitpFilename = filepath.Join(staticDir, "Otvety_UITP_2020.html")
 )
 
 func main() {
