@@ -9,7 +9,7 @@
     <form method="post" action="/search">
         <label>
             <p>Поиск по вопросу:</p>
-            <input name="text" required value="{{ .Text }}">
+            <input id="text" name="text" required value="{{ .Text }}">
         </label>
         <button type="submit">Поиск</button>
     </form>
@@ -17,5 +17,14 @@
     {{ range .Matches }}
         {{ . }}
     {{ end }}
+<script>
+    window.onload = () => {
+        const input = document.getElementById("text");
+        input.focus();
+        const val = input.value;
+        input.value = '';
+        input.value = val;
+    }
+</script>
 </body>
 </html>
