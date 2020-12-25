@@ -27,8 +27,9 @@ func (r *UITPReader) SearchQuestion(substring string) ([]string, error) {
 		return nil, errors.Wrap(err, "failed to read file by goquery")
 	}
 
-	matches := make([]string, 0)
-	doc.Find("h1").Each(func(_ int, s *goquery.Selection) {
+	h1 := doc.Find("h1")
+	matches := make([]string, 0, h1.Length())
+	h1.Each(func(_ int, s *goquery.Selection) {
 		if strings.Contains(strings.ToLower(s.Text()), strings.ToLower(substring)) {
 			question, _ := s.Html()
 			answer, _ := s.Next().Html()
